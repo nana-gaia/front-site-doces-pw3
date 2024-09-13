@@ -1,0 +1,39 @@
+.NavBar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #a13b0b;
+    padding: 0em;
+    border-radius: 30px;
+    flex-direction: row-reverse;
+    text-decoration: none;
+    list-style: none;
+
+
+}
+
+.list{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    background-color: #a13b0b;
+}
+
+.itens{
+    margin-right: 1em;
+    color: white;
+    background-color: #a13b0b;
+    flex-direction:row-reverse;
+    list-style: none;
+    text-decoration: none;
+}
+
+.logo{
+    width: 120px;
+
+}
+
+nav img {
+width: 70px;
+height: 70px;
+}

@@ -1,0 +1,27 @@
+.CreateDoce{
+    background-color:rgb(185, 142, 99); /*container*/
+    color: rgb(235, 228, 228);
+    flex-direction: column;
+    display: flex;
+    gap: 20px;
+    padding: 60px ;
+    width: 300px;
+    justify-content: center;
+    border-radius: 40px;
+}
+
+button {
+    color: #a13b0b;
+    min-width: 10px;
+    width: 100px;
+    justify-content: center;
+
+}
+
+h1{
+    border-radius: 40px;
+}
+
+p{
+    border-radius: 40px;
+}
