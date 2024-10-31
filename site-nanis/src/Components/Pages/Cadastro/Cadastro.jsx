@@ -22,7 +22,7 @@ const CadastroUsuario = () => {
       setMensagem(`Usuário criado com sucesso: ${response.data.nome}`);
     } catch (error) {
       console.error('Erro:', error); // Log para ver o erro
-      setMensagem(`Erro ao criar usuário: ${error.response?.data?.mensagem || 'Erro desconhecido'}`);
+      setMensagem(`Erro ao criar usuário: ${error.response.data.mensagem || 'Erro desconhecido'}`);
     }
   };
 
@@ -42,7 +42,7 @@ const CadastroUsuario = () => {
             required
           />
 
-          {/* <label>Email:</label> */}
+         
           <input
             placeholder= 'Digite seu email'
             type="email"
@@ -51,7 +51,7 @@ const CadastroUsuario = () => {
             required
           />
         
-          {/* <label>Senha:</label> */}
+          
           <input
             placeholder= 'Digite sua senha'
             type="password"

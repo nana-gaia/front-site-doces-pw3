@@ -14,7 +14,7 @@ function App() {
      <BrowserRouter>
      <Container>
       <Routes>
-        <Route path='/' element={<NavBar/>}/>
+          <Route path='/' element={<Home/>}/>
           <Route path='/Home' element={<Home/>}/>
           <Route path='/Cardapio' element={<Cardapio/>}/>
           <Route path='/CreateDoces' element={<CreateDoces/>}/>
