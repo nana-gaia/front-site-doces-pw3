@@ -1,4 +1,3 @@
-// models/Usuario.js
 
 const mongoose = require('mongoose');
 
@@ -10,9 +9,7 @@ const produtoSchema = new mongoose.Schema({
   valor: {
     type: Number,
     required: true,
-
   },
-
 });
 
 module.exports = mongoose.model('Produto', produtoSchema);

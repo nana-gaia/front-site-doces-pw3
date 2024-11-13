@@ -15,11 +15,9 @@ function App() {
      <Container>
       <Routes>
           <Route path='/' element={<Home/>}/>
-          <Route path='/Home' element={<Home/>}/>
           <Route path='/Cardapio' element={<Cardapio/>}/>
           <Route path='/CreateDoces' element={<CreateDoces/>}/>
           <Route path='/Cadastro' element={<Cadastro/>}/>
-
       </Routes>
      </Container>
      </BrowserRouter>

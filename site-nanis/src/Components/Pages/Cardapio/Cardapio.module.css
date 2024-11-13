@@ -1,5 +1,18 @@
 img{
     width: 150px;
-    height: 150px;
+    height: 180px;
     border-radius: 30px;
+    
   }
+
+  p{
+    width: 200px;
+    position: absolute; top: 72%; left: 50%; transform: translate(-50%, -50%);
+  }
+
+  .hcardapio{
+    width: 500px;
+    position: absolute; top: 22%; left: 50%; transform: translate(-50%, -50%);
+
+  }
+

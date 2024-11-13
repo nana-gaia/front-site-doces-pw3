@@ -1,16 +1,30 @@
 const express = require('express');
 const router = express.Router();
-const Produto = require('../model/modelProduto');
+const Produto = require('../model/modelProduto'); 
 
-// Rota para criar um novo usuário
 router.post('/', async (req, res) => {
   try {
-    const novoProduto = new Produto(req.body); // Cria uma nova instância do usuário com os dados recebidos
-    await novoProduto.save(); // Salva o novo usuário no banco de dados
-    res.status(201).json(novoProduto); // Retorna o usuário criado com status 201
+    console.log(req.body); 
+    if (isNaN(req.body.valor)) {
+      return res.status(400).json({ mensagem: 'Preço inválido' });
+    }
+    const novoProduto = new Produto(req.body);
+    await novoProduto.save();
+    res.status(201).json(novoProduto);
   } catch (error) {
-    res.status(400).json({ mensagem: 'Erro ao criar produto', error }); // Retorna erro se não puder criar
+    res.status(400).json({ mensagem: 'Erro ao criar produto', error });
   }
 });
 
-module.exports = router; // Exporta as rotas para uso no servidor
+
+
+router.get('/', async (req, res) => {  
+  try {
+      const doces = await Produto.find(); 
+      res.json({ data: doces });
+  } catch (err) {
+      res.status(500).json({ error: 'Erro ao buscar dados' });
+  }
+});
+
+module.exports = router; 
