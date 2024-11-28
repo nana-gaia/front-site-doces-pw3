@@ -5,9 +5,9 @@ img{
     
   }
 
-  p{
-    width: 200px;
-    position: absolute; top: 72%; left: 50%; transform: translate(-50%, -50%);
+  .doce{
+    width: 20px 20px;
+    justify-content: center;
   }
 
   .hcardapio{

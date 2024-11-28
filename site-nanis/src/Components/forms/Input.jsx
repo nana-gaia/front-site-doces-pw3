@@ -1,17 +1,20 @@
-import style from './Input.module.css'
+import style from './Input.module.css';
 
-function Input ({type, text, name, placeHolder}){
-    return(
+function Input({ type, text, name, placeHolder, value, onChange, ...props }) {
+    return (
         <div className={style.form_control}>
             <label htmlFor={name}>{text}</label>
-            <input 
+            <input
                 type={type}
                 name={name}
                 id={name}
-                placeholder={placeHolder}/>
+                placeholder={placeHolder}
+                value={value}
+                onChange={onChange}
+                
+            />
         </div>
     );
+}
 
-};
-
-export default Input
+export default Input;

@@ -51,7 +51,7 @@ const CadastroProduto = () => {
           
           <button type="submit">Cadastrar</button>
         </form>
-        {mensagem && <p>{mensagem}</p>}
+        {mensagem && <p className={style.pcriar}>{mensagem}</p>}
       </div>
     );
   };

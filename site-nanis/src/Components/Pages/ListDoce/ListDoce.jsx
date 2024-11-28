@@ -1,65 +1,63 @@
 import React, { useState, useEffect } from 'react';
-import style from './ListDoce_container.module.css'
+import style from './ListDoce_container.module.css';
+import Container from '../../Layout/Container/Container';
+import ContainerDoce from '../../Layout/Container/ContainerDoce';
+import CardDoces from '../../../../CardDoce';
+import logo from '../../../../public/logo.png'
+const ListDoce = () => {
 
-const ListarProdutos = () => {
-    const [produtos, setProdutos] = useState([]);
-    const [erro, setErro] = useState(null);
-    const [produtoSelecionado, setProdutoSelecionado] = useState(null);
+    /* CRIAÇAO DO STATE DOS DADOS */
+    const [doces, setDoces] = useState([]);
 
-    useEffect(() => {
-        fetch('http://localhost:3000/produtos')
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`Erro ao buscar produtos: ${response.status}`);
-                }
-                return response.json();
-            })
+    useEffect(()=>{
+
+        fetch('http://localhost:3000/produtos', {
+            method: 'GET',
+            mode:'cors',
+            headers:{
+                'Content-Type':'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': '*'
+            },
+        })
+            .then((resp)=>resp.json())
             .then((data) => {
-                if (data && data.data) {
-                    setProdutos(data.data); 
-                } else {
-                    throw new Error('Dados inválidos recebidos da API');
-                }
+                console.log('Response completa:', data);
+                setDoces(data.data || data);
+                console.log('STATE: ' + doces);
             })
-            .catch((error) => {
-                setErro(error.message);
-            });
+            .catch((err)=>{console.log(err)});
+
     }, []);
 
-    const handleSelectChange = (event) => {
-        const selectedId = event.target.value;
-        const selectedProduto = produtos.find(produto => produto._id === selectedId);
-        setProdutoSelecionado(selectedProduto);
-    };
-
     return (
-        <div>
-            <h1 className={style.hproduto}>Selecionar Produto</h1>
-            {erro && <p>Erro: {erro}</p>}
-            
-            {produtos.length > 0 ? (
-                <select onChange={handleSelectChange} defaultValue="">
-                    <option value="" disabled>Escolha um produto</option>
-                    {produtos.map((produto) => (
-                        <option key={produto._id} value={produto._id}>
-                            {produto.produto} 
-                        </option>
-                    ))}
-                </select>
-            ) : (
-                <p>Nenhum produto encontrado.</p>
-            )}
 
-            {produtoSelecionado && (
-                <div className={style.selecionar}>
-                    <h2>Detalhes do Produto Selecionado</h2>
-                    <p className={style.label}> Nome: {produtoSelecionado.produto}</p> 
-                    <p className={style.label}> Descrição: {produtoSelecionado.descricao}</p>
-                    <p className={style.label}> Preço: R$ {Number(produtoSelecionado.valor).toFixed(2)}</p>
-                </div>
-            )}
-        </div>
-    );
-};
+        <Container>
 
-export default ListarProdutos;
+            <section className={style.listDoce_container}>
+                
+                <h1>DOCES LIST</h1>
+
+                <ContainerDoce>
+                    {
+                        doces.map((doce) => (
+                            <CardDoces
+                                id_doce={doce.id_doce}
+                                nome={doce.nome}
+                                descricao={doce.descricao}
+                                valor={doce.valor}
+                                imagem={logo}
+                                key={doce.id_doce}
+                            />
+                        ))
+                    }
+                </ContainerDoce>
+            </section>
+
+        </Container>
+    )
+}
+
+export default ListDoce
+
+

@@ -6,6 +6,8 @@ import CreateDoces from './Components/Pages/CreateDoce/CreateDoce'
 import Cardapio from './Components/Pages/Cardapio/Cardapio'
 import Home from './Components/Pages/Home/Home'
 import Cadastro from './Components/Pages/Cadastro/Cadastro'
+import Details from './Components/Pages/Details/Details'
+
 
 
 function App() {
@@ -18,6 +20,7 @@ function App() {
           <Route path='/Cardapio' element={<Cardapio/>}/>
           <Route path='/CreateDoces' element={<CreateDoces/>}/>
           <Route path='/Cadastro' element={<Cadastro/>}/>
+          <Route path='/Details/:id_doce' element={<Details/>}/>
       </Routes>
      </Container>
      </BrowserRouter>
