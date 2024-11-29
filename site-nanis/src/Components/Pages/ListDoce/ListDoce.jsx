@@ -43,8 +43,8 @@ const ListDoce = () => {
                         doces.map((doce) => (
                             <CardDoces
                                 id_doce={doce.id_doce}
-                                nome={doce.nome}
-                                descricao={doce.descricao}
+                                nome={doce.produto}
+                                descricao={doce.mensagem}
                                 valor={doce.valor}
                                 imagem={logo}
                                 key={doce.id_doce}

@@ -3,6 +3,7 @@ import { useParams} from "react-router-dom";
 import style from "./Details.module.css";
 import Button from "../../Button";
 import logo from "../../../../public/logo.png"; 
+import CardDoces from "../../../../CardDoce";
 
 const DetailDoce = () => {
    

@@ -27,7 +27,7 @@ const Cardapio = ({ doceNome, doceDescricao, docePreco }) => {
             </section>
             
                 <CardDoces imagem={logo}/>
-                
+                <ListDoces/>
               
         
         </>

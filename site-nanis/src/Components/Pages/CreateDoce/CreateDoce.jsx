@@ -49,7 +49,7 @@ const CadastroProduto = () => {
               required
             />
           
-          <button type="submit">Cadastrar</button>
+          <button className={style.button_cad} type="submit">Cadastrar</button>
         </form>
         {mensagem && <p className={style.pcriar}>{mensagem}</p>}
       </div>

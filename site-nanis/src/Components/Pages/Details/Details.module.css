@@ -3,6 +3,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     padding: 20px;
+    
 }
 
 .info{
@@ -30,11 +31,12 @@
 .nome{
     font-size: 40px;
     padding: 10px;
+    color: #a10909;
 }
 
 .valor{
     font-size: 30px;
-    color: #ccc;
+    color: #a10909;
     padding: 10px;
 }
 
@@ -51,12 +53,4 @@
     color: #aa0202;
     background-color: black;
     
-}
-
-.editar{
-    color: #aa0202;
-}
-
-.excluir{
-    color: blue;
 }
