@@ -48,7 +48,15 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap:5px;
-    color: #999;
+    color: #aa0202;
     background-color: black;
     
+}
+
+.editar{
+    color: #aa0202;
+}
+
+.excluir{
+    color: blue;
 }

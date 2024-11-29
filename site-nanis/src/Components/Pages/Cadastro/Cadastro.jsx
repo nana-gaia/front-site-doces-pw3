@@ -60,7 +60,7 @@ const CadastroUsuario = () => {
             required
           />
         
-        <button type="submit">Cadastrar</button>
+        <button className={style.subutton}type="submit">Cadastrar</button>
       </form>
       {mensagem && <p>{mensagem}</p>}
     </div>

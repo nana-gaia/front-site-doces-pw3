@@ -45,8 +45,8 @@ const DetailDoce = () => {
                 <span className={style.descricao}>{doce.descricao}
                 </span>
             
-                <div className={style.buttons}>
-                    <Button
+                <div>
+                    <Button 
                         label='EDITAR'
                         router='/updateDoce/'
                         cod_doce={doce.id_doce}

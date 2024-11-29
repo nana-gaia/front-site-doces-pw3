@@ -3,7 +3,7 @@
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 20px;
-    padding: 20px;
+    padding: 200px;
 }
 
 .container_img {
@@ -36,8 +36,8 @@
     color: #777;
 }
 
-.container_buttons {
-    margin-top: 20px;
-    display: flex;
-    gap: 10px;
+.buttons {
+    margin-top: -300px;
 }
+
+

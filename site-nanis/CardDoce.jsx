@@ -10,7 +10,7 @@ const CardDoces = ({ nome, valor, descricao, imagem, id_doce }) => {
             <p>{valor}</p>
             <img src={imagem} alt={nome} title={{nome}} />
             <div>
-                <Button label='DETALHE' router='/Details/' id_doce={id_doce} />
+                <Button label='DETALHE' router='/Details/' id_doce={id_doce} className={style.detalhes}/>
             </div>
         </div>
     )
