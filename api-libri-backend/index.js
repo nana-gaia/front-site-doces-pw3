@@ -17,6 +17,8 @@ mongoose.connect('mongodb+srv://geovannacarol2003:tngpccca@back-site.vjsnh.mongo
 
 app.use('/usuarios', usuarioRoutes); 
 app.use('/produtos', produtoRoutes); 
+app.use('/excluirProduto/:id_doce', produtoRoutes); 
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

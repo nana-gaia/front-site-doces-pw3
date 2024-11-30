@@ -44,7 +44,7 @@ const ListDoce = () => {
                             <CardDoces
                                 id_doce={doce.id_doce}
                                 nome={doce.produto}
-                                descricao={doce.mensagem}
+                                descricao={doce.descricao}
                                 valor={doce.valor}
                                 imagem={logo}
                                 key={doce.id_doce}
