@@ -23,8 +23,8 @@ function App() {
           <Route path='/CreateDoces' element={<CreateDoces/>}/>
           <Route path='/Cadastro' element={<Cadastro/>}/>
           <Route path='/Details/:id_doce' element={<Details/>}/>
-          <Route path='/Delete/:id_doce' element={<DeleteProduto/>}/>
-          <Route path='/Update/:id_doce' element={<UpdateProduto/>}/>
+          <Route path='/delete/:id_doce' element={<DeleteProduto/>}/>
+          <Route path='/update/:cod_doce' element={<UpdateProduto/>}/>
 
 
       </Routes>

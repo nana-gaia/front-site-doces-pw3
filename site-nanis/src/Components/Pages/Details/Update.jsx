@@ -1,48 +1,46 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-// import style from './UpdateProduto.module.css';  // Certifique-se de que o arquivo de estilo está correto
+import style from './Update.module.css';
+import Input from '../../forms/Input';
+// import Select from '../../forms/Select';
+import Button from '../../forms/Button';
 
-// Certifique-se de que os componentes Input, Category, ImageView, e Button estão importados corretamente
-// import Input from '../components/Input';  
-// import Category from '../components/Category';
-// import ImageView from '../components/ImageView';
-// import Button from '../components/Button';
-
-const UpdateProduto = () => {
-    // Estado para armazenar os dados do doce
+const UpdateDoce = () => {
     const [doce, setDoce] = useState({});
-    const [categorias, setCategorias] = useState([]);  // Adicionando estado para categorias
-
-    // Obtendo o id do produto pela URL
+    // const [categorias, setCategorias] = useState([]);
     const { id_doce } = useParams();
     const navigate = useNavigate();
 
-    // Função para capturar os dados dos inputs
+    // Atualiza o estado `doce` ao alterar os inputs
     function handlerChangeDoce(event) {
         const { name, value } = event.target;
         setDoce((prevDoce) => ({ ...prevDoce, [name]: value }));
     }
 
-    // Recupera os dados de categorias do backend
-    useEffect(() => {
-        fetch('http://localhost:3000/produtos', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Headers': '*'
-            },
-        })
-            .then((resp) => resp.json())
-            .then((data) => {
-                setCategorias(data.data);  // Atualizando o estado com as categorias
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }, []);
+    // Atualiza o estado `doce` ao selecionar uma categoria
+    // function handleChangeCategoria(event) {
+    //     setDoce((prevDoce) => ({ ...prevDoce, categoria_id: event.target.value }));
+    // }
 
-    // Recupera os dados do produto com base no id_doce
+    // Recupera os dados das categorias do backend
+    // useEffect(() => {
+    //     fetch('http://localhost:3000/listDoces', {
+    //         method: 'GET',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'Access-Control-Allow-Origin': '*',
+    //         },
+    //     })
+    //         .then((resp) => resp.json())
+    //         .then((data) => {
+    //             if (data && data.data) {
+    //                 setCategorias(data.data);
+    //             }
+    //         })
+    //         .catch((error) => console.error('Erro ao buscar categorias:', error));
+    // }, []);
+
+    // Recupera os dados do doce do backend
     useEffect(() => {
         fetch(`http://localhost:3000/produtos/${id_doce}`, {
             method: 'GET',
@@ -54,85 +52,76 @@ const UpdateProduto = () => {
         })
             .then((resp) => resp.json())
             .then((data) => {
-                setDoce(data.data);  // Atualiza o estado com os dados do produto
+                if (data && data.data) {
+                    setDoce(data.data);
+                }
             })
-            .catch((err) => {
-                console.log(err);
-            });
-    }, [id_doce]);
+            .catch((err) => console.error('Erro ao buscar doce:', err));
+    }, []);
 
-    // Função para atualizar o produto no backend
-    function UpdateProduto(doce) {
-        fetch('http://localhost:3000/atualizarProduto', {
+    // Envia os dados para o backend para atualizar o doce
+    function update(doce) {
+        console.log(JSON.stringify(doce));
+
+        fetch(`http://localhost:3000/atualizarProduto`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Headers': '*'
             },
-            body: JSON.stringify(doce)
+            body: JSON.stringify(doce),
         })
             .then((resp) => resp.json())
             .then((data) => {
-                navigate('/listDoce', { state: 'PRODUTO ATUALIZADO' });
+                console.log('Atualização concluída:', data);
+                navigate('/listDoce', { state: 'DOCE ATUALIZADO COM SUCESSO!' });
             })
-            .catch((err) => {
-                console.log(err);
-            });
+            .catch((err) => console.error('Erro ao atualizar doce:', err));
+           
     }
 
-    // Função para lidar com o envio do formulário
+    // Função de envio do formulário
     function submit(event) {
         event.preventDefault();
-        UpdateProduto(doce);
+        update(doce);
     }
 
     return (
-        <section className={style.create_doce}>
-            <h1 className={style.title}>ATUALIZAR MATERIAL</h1>
-
+        <section className={style.create_doce_container}>
+            <h1>ALTERAÇÃO DE DOCES</h1>
             <form onSubmit={submit}>
                 <Input
-                    type='text'
-                    name='nome_produto'
-                    id='nome_produto'
-                    placeHolder='Digite o nome deste produto'
-                    text='Título do produto'
-                    handlerChangeMaterialProp={handlerChangeDoce}
-                    value={doce.nome_produto || ''}
-                />
-
-
-                <Input
-                    type='text'
-                    name='descricao_produto'
-                    id='descricao_produto'
-                    placeHolder='Digite uma descrição do produto'
-                    text='Descrição do produto'
-                    handlerChangeDoceProp={handlerChangeDoce}
-                    value={doce.descricao_produto || ''}
-                />
-
-                <ImageView
-                    name='imageView'
-                    placeHolder='Insira uma imagem de visualização'
-                    text='Imagem de visualização'
+                    type="text"
+                    name="nome_doce"
+                    id="nome_doce"
+                    placeHolder="Digite o nome do doce"
+                    text="Nome do Doce"
+                    handlerOnChange={handlerChangeDoce}
+                    value={doce.produto}
                 />
 
                 <Input
-                    type='file'
-                    name='file'
-                    placeHolder='Insira seu arquivo'
-                    text='Arquivo'
-                    handlerChangeDoceProp={null}
+                    type="number"
+                    name="valor"
+                    id="valor"
+                    placeHolder="Digite o valor do doce"
+                    text="Valor do Doce"
+                    handlerOnChange={handlerChangeDoce}
+                    value={doce.valor}
                 />
 
-                <Button
-                    rotulo='Editar produto'
-                />
+                {/* <Select
+                    name="categoria_id"
+                    text="Selecione a Categoria"
+                    options={categorias}
+                    handlerOnChange={handleChangeCategoria}
+                    value={doce.categoria_id || ''}
+                /> */}
+
+                <Button rotulo="Editar Doce" />
             </form>
         </section>
     );
 };
 
-export default UpdateProduto;
+export default UpdateDoce;

@@ -47,16 +47,16 @@ const DetailDoce = () => {
                 </span>
             
                 <div>
-                    <Button 
-                        label='EDITAR'
-                        router='/updateDoce/'
-                        cod_doce={doce.id_doce}
+                <Button
+                    label="EDITAR"
+                    router={/update/}
+                    id_doce={doce.id_doce}
                     />
+                    <Button
+                    label="EXCLUIR"
+                    router={/delete/}
+                    id_doce={doce.id_doce}
 
-                    <Button 
-                        label='EXCLUIR'
-                        router='/deleteDoce/'
-                        cod_doce={doce.id_doce}
                     />
 
                 </div>

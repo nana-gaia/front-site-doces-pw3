@@ -28,20 +28,17 @@ router.get('/', async (req, res) => {
 });
 
 // Rota para excluir um produto pelo ID
-router.delete('/', async (req, res) => {
-  const { id_doce } = req.params;  // Pega o ID do doce da URL
+router.delete('/excluirProduto/:id_doce', async (req, res) => {
+  const { id_doce } = req.params;
 
   try {
-    // Busca e deleta o produto pelo ID
     const produtoExcluido = await Produto.findByIdAndDelete(id_doce);
 
-    // Se o produto não existir
     if (!produtoExcluido) {
       return res.status(404).json({ mensagem: 'Produto não encontrado' });
     }
 
-    // Produto excluído com sucesso
-    res.status(200).json({ mensagem: 'Produto excluído com sucesso!', produtoExcluido });
+    res.status(200).json({ mensagem: 'Produto excluído com sucesso!' });
   } catch (err) {
     res.status(500).json({ mensagem: 'Erro ao excluir produto', error: err });
   }
