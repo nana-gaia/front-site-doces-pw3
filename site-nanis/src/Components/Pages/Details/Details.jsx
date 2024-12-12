@@ -5,27 +5,29 @@ import Button from "../../Button";
 import logo from "../../../../public/logo.png"; 
 
 const DetailDoce = () => {
-    const { id } = useParams();  // Certifique-se de usar "id" aqui, pois é o nome do parâmetro na URL
-    console.log("ID do Doce:", id);  // Verifique no console se o ID está sendo recebido corretamente
+    const { id } = useParams(); // Corrigido para id
+    console.log("ID do Doce:", id);
 
     const [doce, setDoce] = useState({});
 
     useEffect(() => {
-        if (id) {  // Verifica se o ID está presente
-            fetch(`http://localhost:3000/produtos/${id}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then((resp) => resp.json())
-            .then((data) => {
-                setDoce(data);  // Preenche o estado com o doce encontrado
-                console.log("Doce encontrado:", data);
-            })
-            .catch((err) => console.error("Erro ao buscar o doce:", err));
+        if (!id) {
+          console.error("ID inválido:", id);
+          return;
         }
-    }, [id]);  // Atualiza o estado sempre que o ID mudar
+        fetch(`http://localhost:3000/detalhes/${id}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((resp) => resp.json())
+          .then((data) => {
+            setDoce(data);
+          })
+          .catch((err) => console.error("Erro ao buscar o doce:", err));
+      }, [id]);
+      
 
     return (
         <div className={style.grid}>

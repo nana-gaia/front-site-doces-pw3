@@ -41,14 +41,14 @@ const ListDoce = () => {
 
                 <ContainerDoce>
                     {
-                        doces.map((doce) => (
+                        doces.map((produto) => (
                             <CardDoces
-                                _id={doce._id}
-                                nome={doce.produto}
-                                descricao={doce.descricao}
-                                valor={doce.valor}
+                                nome={produto.produto}
+                                descricao={produto.descricao}
+                                valor={produto.valor}
                                 imagem={logo}
-                                key={doce._id}
+                                _id={produto._id}
+                                key={produto._id}
                             />
                         ))
                     }
