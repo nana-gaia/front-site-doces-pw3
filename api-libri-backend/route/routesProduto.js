@@ -27,12 +27,13 @@ router.get('/', async (req, res) => {
   }
 });
 
+
 // Rota para excluir um produto pelo ID
-router.delete('/excluirProduto/:id_doce', async (req, res) => {
-  const { id_doce } = req.params;
+router.delete('/delete/:id', async (req, res) => {
+  const { id } = req.params;  // Corrigido para "id" (mesmo nome da URL)
 
   try {
-    const produtoExcluido = await Produto.findByIdAndDelete(id_doce);
+    const produtoExcluido = await Produto.findByIdAndDelete(id);  // Usando "id" aqui
 
     if (!produtoExcluido) {
       return res.status(404).json({ mensagem: 'Produto não encontrado' });
@@ -45,8 +46,8 @@ router.delete('/excluirProduto/:id_doce', async (req, res) => {
 });
 
 // Rota para atualizar um produto pelo ID
-router.put('/atualizarProduto/:id_doce', async (req, res) => {
-  const { id_doce } = req.params;  // Pega o ID do doce da URL
+router.put('/update/:id', async (req, res) => {
+  const { id } = req.params;  // Corrigido para "id" (mesmo nome da URL)
   const dadosAtualizados = req.body;  // Dados para atualização
 
   try {
@@ -56,7 +57,7 @@ router.put('/atualizarProduto/:id_doce', async (req, res) => {
     }
 
     // Busca e atualiza o produto pelo ID
-    const produtoAtualizado = await Produto.findByIdAndUpdate(id_doce, dadosAtualizados, { new: true });
+    const produtoAtualizado = await Produto.findByIdAndUpdate(id, dadosAtualizados, { new: true });  // Usando "id" aqui
 
     // Se o produto não for encontrado
     if (!produtoAtualizado) {
