@@ -7,6 +7,7 @@ import logo from '../../../../public/logo.png'
 const ListDoce = () => {
 
     /* CRIAÇAO DO STATE DOS DADOS */
+    
     const [doces, setDoces] = useState([]);
 
     useEffect(()=>{
@@ -42,12 +43,12 @@ const ListDoce = () => {
                     {
                         doces.map((doce) => (
                             <CardDoces
-                                id_doce={doce.id_doce}
+                                _id={doce._id}
                                 nome={doce.produto}
                                 descricao={doce.descricao}
                                 valor={doce.valor}
                                 imagem={logo}
-                                key={doce.id_doce}
+                                key={doce._id}
                             />
                         ))
                     }

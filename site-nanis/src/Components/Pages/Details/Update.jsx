@@ -8,7 +8,7 @@ import Button from '../../forms/Button';
 const UpdateDoce = () => {
     const [doce, setDoce] = useState({});
     // const [categorias, setCategorias] = useState([]);
-    const { id_doce } = useParams();
+    const { _id } = useParams();
     const navigate = useNavigate();
 
     // Atualiza o estado `doce` ao alterar os inputs
@@ -42,7 +42,7 @@ const UpdateDoce = () => {
 
     // Recupera os dados do doce do backend
     useEffect(() => {
-        fetch(`http://localhost:3000/produtos/${id_doce}`, {
+        fetch(`http://localhost:3000/produtos/${_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ const UpdateDoce = () => {
     function update(doce) {
         console.log(JSON.stringify(doce));
 
-        fetch(`http://localhost:3000/atualizarProduto`, {
+        fetch(`http://localhost:3000/update/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

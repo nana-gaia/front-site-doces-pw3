@@ -2,13 +2,13 @@ import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 function DeleteProduto() {
-    const { id_doce } = useParams();  // Pega o ID do produto a partir da URL
+    const { id } = useParams();  // Pega o ID do produto a partir da URL
     const navigate = useNavigate();  // Hook para navegação
 
-    // useEffect com dependência de id_doce para evitar chamadas infinitas
+    // useEffect com dependência de _id para evitar chamadas infinitas
     useEffect(() => {
         // Fazendo a requisição DELETE para excluir o produto
-        fetch(`http://localhost:3000/excluirProduto/${id_doce}`, {
+        fetch(`http://localhost:3000/delete/${id}`, {
             method:'DELETE',
             mode:'cors',
             headers:{
@@ -20,7 +20,7 @@ function DeleteProduto() {
             resp => resp.json()
         ).then(
             (data)=>{
-                navigate('/Cardapio',{state:'LIVRO EXCLUÍDO COM SUCESSO!'});
+                navigate('/cardapio',{state:'LIVRO EXCLUÍDO COM SUCESSO!'});
             }
         ).catch(
             err => console.log(err)
